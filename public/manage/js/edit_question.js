@@ -80,17 +80,20 @@ new Vue({
                     options: this.options
                 })
             })
-                .then(function (response) {
-                    return response.json()
-                })
-                .then(function (json) {
-                    self.saving = false;
-                    if (!json.success) {
-                        self.errorMessage = json.error;
-                    } else {
-                        notie.alert(1, '保存成功!', 1);
-                    }
-                });
+            .then(function (response) {
+                return response.json()
+            })
+            .then(function (json) {
+                self.saving = false;
+                if (!json.success) {
+                    self.errorMessage = json.error;
+                } else {
+                    notie.alert(1, '保存成功!', 1);
+                }
+            })
+            .catch(function(err) {
+                console.log(err)
+            });
         },
         deleteQuestion: function () {
             var self = this;
